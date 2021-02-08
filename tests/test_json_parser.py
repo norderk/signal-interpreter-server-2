@@ -1,15 +1,18 @@
 from unittest.mock import patch, mock_open
 from signal_interpreter_server.json_parser import JsonParser
 
+# pylint: disable=missing-function-docstring, missing-class-docstring, Missing module docstring
 
 VALID_JSON_DATA = '{ "json" : "This is a JSON" }'
 PARSED_JSON_DATA = {"json" : "This is a JSON" }
+
 
 def test_laod_file():
     with patch('builtins.open', mock_open(read_data = VALID_JSON_DATA)):
         json_parser = JsonParser()
         json_parser.load_file('some/path')
         assert json_parser.data == PARSED_JSON_DATA
+
 
 def test_get_signal_title():
     json_parser = JsonParser()
