@@ -11,6 +11,7 @@ pytest = "*"
 pycodestyle = "*"
 pylint = "*"
 pytest-cov = "*"
+invoke = "==1.4.0"
 
 [requires]
 python_version = "3.9"
