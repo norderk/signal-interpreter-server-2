@@ -7,19 +7,17 @@ SRC_DIR = os.path.join(CURR_DIR, 'signal_interpreter_server')
 UNIT_TEST_DIR = os.path.join(CURR_DIR, 'tests')
 COV_PATH = os.path.join(CURR_DIR, '.coveragerc')
 
-
 @task
-def style():
+def style(_):
     call(f'pycodestyle {SRC_DIR}', shell=True)
 
 
 @task
-def lint():
+def lint(_):
     call(f'pylint {SRC_DIR}', shell=True)
 
 
 @task
-def unit_test():
-    cmd = f'pytest {UNIT_TEST_DIR} --cov {SRC_DIR} --cov-config{COV_PATH}'
+def unittest(_):
+    cmd = f'pytest {UNIT_TEST_DIR} --cov {SRC_DIR} -config{COV_PATH}'
     call(cmd, shell=True)
-
